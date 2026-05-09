@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Service — South Florida Electric</title>
+  <meta name="description" content="Schedule a licensed electrician online. Pick a date and time that works for you." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">
+        <span class="bolt">&#9889;</span>
+        <span>South Florida <strong>Electric</strong></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="booking.html" class="active">Book Now</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:+19545550123" class="btn btn-ghost btn-sm">954-555-0123</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Booking</p>
+      <h1>Schedule your appointment.</h1>
+      <p class="lede">Pick a date and time and tell us what you need — we'll confirm by phone or email within an hour.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container form-wrap">
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="firstName">First name *</label>
+            <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
+          </div>
+          <div class="form-field">
+            <label for="lastName">Last name *</label>
+            <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone *</label>
+            <input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="(954) 555-0123" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="address">Service address *</label>
+          <input id="address" name="address" type="text" required autocomplete="street-address" placeholder="Street, City, FL ZIP" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="service">Service type *</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service…</option>
+              <optgroup label="Residential">
+                <option>Panel Upgrade</option>
+                <option>EV Charger Install</option>
+                <option>Lighting / Ceiling Fan</option>
+                <option>Outlets &amp; Switches</option>
+                <option>Whole-Home Rewire</option>
+                <option>Generator Install</option>
+              </optgroup>
+              <optgroup label="Commercial">
+                <option>Tenant Build-Out</option>
+                <option>LED Retrofit</option>
+                <option>Code Compliance</option>
+                <option>Emergency Repair</option>
+                <option>Data &amp; Low-Voltage</option>
+                <option>Maintenance Plan</option>
+              </optgroup>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="urgency">Urgency</label>
+            <select id="urgency" name="urgency">
+              <option>Standard (within a week)</option>
+              <option>Soon (within 48 hours)</option>
+              <option>Emergency (today)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="date">Preferred date *</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+          <div class="form-field">
+            <label for="time">Preferred time *</label>
+            <select id="time" name="time" required>
+              <option value="">Choose a time…</option>
+              <option>7:00 AM – 9:00 AM</option>
+              <option>9:00 AM – 11:00 AM</option>
+              <option>11:00 AM – 1:00 PM</option>
+              <option>1:00 PM – 3:00 PM</option>
+              <option>3:00 PM – 5:00 PM</option>
+              <option>5:00 PM – 7:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="notes">Tell us about the job</label>
+          <textarea id="notes" name="notes" rows="5" placeholder="Briefly describe what you need help with…"></textarea>
+        </div>
+
+        <div class="form-field checkbox">
+          <input id="consent" name="consent" type="checkbox" required />
+          <label for="consent">I agree to be contacted by phone or email about this request. *</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Request Appointment</button>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <h3>&#10003; Request received!</h3>
+          <p>Thanks <span id="successName"></span> — we'll call you at <span id="successPhone"></span> within the hour to confirm your <span id="successWindow"></span> appointment.</p>
+        </div>
+      </form>
+
+      <aside class="booking-aside">
+        <h3>What happens next?</h3>
+        <ol>
+          <li>We confirm your appointment by phone or text.</li>
+          <li>A licensed electrician arrives during your time window.</li>
+          <li>You get a flat-rate quote before any work starts.</li>
+        </ol>
+        <hr />
+        <h3>Need it now?</h3>
+        <p>For same-day or emergency service, please call us directly.</p>
+        <a href="tel:+19545550123" class="btn btn-primary btn-block">Call 954-555-0123</a>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo logo-light">
+          <span class="bolt">&#9889;</span>
+          <span>South Florida <strong>Electric</strong></span>
+        </div>
+        <p class="muted">Licensed master electricians serving South Florida since 2008.</p>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="services.html">Services</a>
+        <a href="booking.html">Book Now</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="tel:+19545550123">954-555-0123</a>
+        <a href="mailto:hello@southfloridaelectric.com">hello@southfloridaelectric.com</a>
+        <p class="muted">Mon–Sat 7am–7pm &middot; 24/7 Emergency</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>&copy; 2026 South Florida Electric. License #EC0000000.</small>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
