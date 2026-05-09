@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>South Florida Electric — Preview</title>
+  <style>
+    :root{--navy:#0b2545;--navy-2:#13315c;--yellow:#ffc107;--yellow-2:#ffb300;--ink:#0f172a;--muted:#5b6478;--line:#e6eaf2;--bg:#fff;--bg-alt:#f6f8fc;--shadow:0 6px 24px rgba(11,37,69,.08);--radius:14px;--container:1140px}
+    *{box-sizing:border-box}html,body{margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+    a{color:var(--navy);text-decoration:none}a:hover{color:var(--yellow-2)}
+    h1,h2,h3,h4,h5{color:var(--navy);line-height:1.2;margin:0 0 .5rem}
+    h1{font-size:clamp(2rem,4.5vw,3.25rem)}h2{font-size:clamp(1.6rem,3vw,2.25rem)}h3{font-size:1.25rem}
+    p{margin:0 0 1rem}
+    .container{width:min(var(--container),92%);margin:0 auto}
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;gap:1rem}
+    .logo{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;color:var(--navy);font-size:1.1rem}
+    .logo .bolt{display:inline-grid;place-items:center;width:32px;height:32px;background:var(--yellow);color:var(--navy);border-radius:8px;font-size:1.1rem;box-shadow:0 2px 8px rgba(255,193,7,.4)}
+    .logo strong{font-weight:800}.logo-light{color:#fff}.logo-light strong{color:var(--yellow)}
+    .nav{display:flex;align-items:center;gap:1.25rem}.nav a{color:var(--navy);font-weight:500}.nav a.active{color:var(--yellow-2)}
+    .nav-toggle{display:none;background:transparent;border:0;padding:.4rem;width:40px;height:40px;cursor:pointer}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--navy);margin:4px auto;border-radius:2px}
+    .btn{display:inline-block;padding:.85rem 1.4rem;border-radius:999px;font-weight:600;font-size:1rem;border:2px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s,color .15s}
+    .btn-primary{background:var(--yellow);color:var(--navy)}
+    .btn-primary:hover{background:var(--yellow-2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,193,7,.4);color:var(--navy)}
+    .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}.btn-ghost:hover{background:var(--navy);color:#fff}
+    .btn-sm{padding:.5rem .9rem;font-size:.9rem}.btn-lg{padding:1rem 1.7rem;font-size:1.05rem}
+    .btn-block{display:block;width:100%;text-align:center;margin-top:.6rem}
+    .hero{background:radial-gradient(1100px 500px at 80% -10%,rgba(255,193,7,.18),transparent 60%),linear-gradient(160deg,#0b2545 0%,#13315c 60%,#1b3a6b 100%);color:#fff;padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,8vw,5rem)}
+    .hero h1{color:#fff}.hero .accent{color:var(--yellow)}.hero .lede{color:#cdd6e6;max-width:60ch}
+    .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;font-weight:700;color:var(--yellow);margin:0 0 .6rem}
+    .hero-inner{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5rem;align-items:center}
+    .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.2rem 0 1.5rem}
+    .trust{list-style:none;padding:0;margin:0;display:flex;gap:1.5rem;flex-wrap:wrap;color:#cdd6e6}
+    .trust li{font-size:.9rem}.trust span{color:#fff;font-weight:600;margin-left:.25rem}
+    .hero-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
+    .hero-card h3{margin-top:0}
+    .section{padding:clamp(3rem,6vw,4.5rem) 0}.section-alt{background:var(--bg-alt)}
+    .section-title{text-align:center}.section-sub{text-align:center;color:var(--muted);margin-top:-.25rem;margin-bottom:2rem}
+    .page-head{background:linear-gradient(160deg,#0b2545 0%,#13315c 100%);color:#fff;padding:3rem 0}.page-head h1{color:#fff;margin-bottom:.5rem}.page-head .lede{color:#cdd6e6;max-width:60ch}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;transition:transform .15s,box-shadow .15s,border-color .15s}
+    .card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:transparent}
+    .card-icon{width:44px;height:44px;display:grid;place-items:center;background:rgba(255,193,7,.18);color:var(--navy);border-radius:10px;font-size:1.4rem;margin-bottom:.75rem}
+    .card-link{display:inline-block;margin-top:.5rem;font-weight:600}
+    .feature h4{margin:.4rem 0 .3rem}
+    .feature-icon{width:40px;height:40px;display:grid;place-items:center;background:var(--navy);color:var(--yellow);border-radius:10px;font-size:1.2rem}
+    .cta-band{background:var(--navy);color:#fff;padding:2.5rem 0}.cta-band h2{color:#fff;margin-bottom:.25rem}.cta-band p{color:#cdd6e6;margin:0}
+    .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+    .form-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:1.5rem;align-items:start}
+    .booking-form,.booking-aside{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow)}
+    .booking-aside ol{padding-left:1.1rem;margin:0 0 1rem}.booking-aside hr{border:0;border-top:1px solid var(--line);margin:1.25rem 0}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-field{margin-bottom:1rem;display:flex;flex-direction:column}
+    .form-field label{font-size:.9rem;font-weight:600;margin-bottom:.35rem;color:var(--navy)}
+    .form-field input,.form-field select,.form-field textarea{font:inherit;color:var(--ink);padding:.7rem .85rem;border:1px solid var(--line);border-radius:10px;background:#fff;transition:border-color .15s,box-shadow .15s}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--yellow-2);box-shadow:0 0 0 3px rgba(255,193,7,.25)}
+    .form-field.checkbox{flex-direction:row;align-items:center;gap:.5rem}.form-field.checkbox label{margin:0;font-weight:500}
+    .form-field input[type=checkbox]{width:18px;height:18px}
+    .form-field.has-error input,.form-field.has-error select,.form-field.has-error textarea{border-color:#b00020}
+    .form-success{margin-top:1rem;padding:1rem;background:#e7f7ec;border:1px solid #b6e4c5;border-radius:10px;color:#14532d}
+    .form-success h3{color:#14532d;margin-top:0}
+    .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;display:block;color:var(--ink);transition:transform .15s,box-shadow .15s,border-color .15s}
+    .contact-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:transparent}
+    .contact-card .big{font-size:1.15rem;font-weight:700;color:var(--navy);margin:.25rem 0}
+    .site-footer{background:var(--navy);color:#cdd6e6;padding:2.5rem 0 1.25rem;margin-top:1rem}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:2rem}
+    .footer-grid h5{color:#fff;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.08em;font-size:.85rem}
+    .footer-grid a{display:block;color:#cdd6e6;padding:.15rem 0}.footer-grid a:hover{color:var(--yellow)}
+    .muted{color:#94a3b8}.footer-bottom{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.08);color:#94a3b8}
+    .preview-banner{background:#fff8dc;border-bottom:1px solid #ffe27a;color:#5c3a00;padding:.6rem 0;text-align:center;font-size:.9rem}
+    .anchor{padding-top:0}
+    @media (max-width:900px){.hero-inner{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}.form-wrap{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:720px){.nav-toggle{display:inline-block}.nav{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:.5rem 0;display:none}.nav.open{display:flex}.nav a{padding:.85rem 1rem;border-top:1px solid var(--line)}.nav .btn{margin:.5rem 1rem;text-align:center}.grid-2,.grid-3{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.cta-inner{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="preview-banner">Single-page preview &middot; full multi-page site lives on the branch</div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="logo"><span class="bolt">&#9889;</span><span>South Florida <strong>Electric</strong></span></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <a href="#top" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#booking">Book Now</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:+19545550123" class="btn btn-ghost btn-sm">954-555-0123</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">Licensed &middot; Insured &middot; Local</p>
+        <h1>Powering South Florida, <span class="accent">one home and business at a time.</span></h1>
+        <p class="lede">From quick repairs to full commercial installs, our master electricians get the job done safely, fast, and to code. Same-day service available across Broward, Miami-Dade, and Palm Beach.</p>
+        <div class="hero-cta">
+          <a href="#booking" class="btn btn-primary">Book a Service</a>
+          <a href="#services" class="btn btn-ghost">See What We Do</a>
+        </div>
+        <ul class="trust">
+          <li>&#9733;&#9733;&#9733;&#9733;&#9733; <span>500+ 5-star reviews</span></li>
+          <li>&#10003; 24/7 Emergency Service</li>
+          <li>&#10003; Upfront Pricing</li>
+        </ul>
+      </div>
+      <div class="hero-card">
+        <h3>Need help today?</h3>
+        <p>Call us and a licensed electrician will be on the way.</p>
+        <a href="tel:+19545550123" class="btn btn-primary btn-block">Call 954-555-0123</a>
+        <a href="#booking" class="btn btn-ghost btn-block">Or book online &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-sub">Two specialties. One trusted team.</p>
+      <div class="grid-2">
+        <article class="card"><div class="card-icon">&#127968;</div><h3>Residential Electrical</h3><p>Panel upgrades, EV chargers, ceiling fans, lighting, outlets, generators, smart home wiring, and full home rewires.</p></article>
+        <article class="card"><div class="card-icon">&#127970;</div><h3>Commercial Electrical</h3><p>Tenant build-outs, lighting retrofits, code compliance, emergency repairs, data/low-voltage, and scheduled maintenance.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Residential Specialties</h2>
+      <div class="grid-3">
+        <article class="card"><div class="card-icon">&#128268;</div><h3>Panel Upgrades</h3><p>Upgrade aging panels to modern 200A service with whole-home surge protection.</p></article>
+        <article class="card"><div class="card-icon">&#128663;</div><h3>EV Charger Install</h3><p>Level 2 home charging stations professionally installed and permitted.</p></article>
+        <article class="card"><div class="card-icon">&#128161;</div><h3>Lighting &amp; Fans</h3><p>Recessed lighting, ceiling fans, outdoor and landscape lighting installs.</p></article>
+        <article class="card"><div class="card-icon">&#128267;</div><h3>Outlets &amp; Switches</h3><p>New outlets, USB outlets, GFCI/AFCI protection, and dimmer installs.</p></article>
+        <article class="card"><div class="card-icon">&#127968;</div><h3>Whole-Home Rewires</h3><p>Replace old aluminum or knob-and-tube wiring with safe modern wiring.</p></article>
+        <article class="card"><div class="card-icon">&#9211;</div><h3>Generators</h3><p>Standby and portable generator installs with automatic transfer switches.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Commercial Specialties</h2>
+      <div class="grid-3">
+        <article class="card"><div class="card-icon">&#127970;</div><h3>Tenant Build-Outs</h3><p>Full electrical for new restaurants, retail, and office build-outs.</p></article>
+        <article class="card"><div class="card-icon">&#128161;</div><h3>LED Retrofits</h3><p>Energy-saving LED conversions with potential utility rebate assistance.</p></article>
+        <article class="card"><div class="card-icon">&#128737;</div><h3>Code Compliance</h3><p>Inspections, corrections, and certifications to keep your business compliant.</p></article>
+        <article class="card"><div class="card-icon">&#128293;</div><h3>Emergency Repairs</h3><p>24/7 dispatch for power outages, panel failures, and electrical emergencies.</p></article>
+        <article class="card"><div class="card-icon">&#128225;</div><h3>Data &amp; Low-Voltage</h3><p>Structured cabling, network drops, and access control wiring.</p></article>
+        <article class="card"><div class="card-icon">&#128296;</div><h3>Maintenance Plans</h3><p>Scheduled preventative maintenance to avoid costly downtime.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-head" id="booking">
+    <div class="container">
+      <p class="eyebrow">Booking</p>
+      <h1>Schedule your appointment.</h1>
+      <p class="lede">Pick a date and time and tell us what you need — we'll confirm by phone or email within an hour.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container form-wrap">
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-field"><label for="firstName">First name *</label><input id="firstName" name="firstName" type="text" required /></div>
+          <div class="form-field"><label for="lastName">Last name *</label><input id="lastName" name="lastName" type="text" required /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label for="email">Email *</label><input id="email" name="email" type="email" required /></div>
+          <div class="form-field"><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" required placeholder="(954) 555-0123" /></div>
+        </div>
+        <div class="form-field"><label for="address">Service address *</label><input id="address" name="address" type="text" required placeholder="Street, City, FL ZIP" /></div>
+        <div class="form-row">
+          <div class="form-field"><label for="service">Service type *</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service…</option>
+              <optgroup label="Residential"><option>Panel Upgrade</option><option>EV Charger Install</option><option>Lighting / Ceiling Fan</option><option>Outlets &amp; Switches</option><option>Whole-Home Rewire</option><option>Generator Install</option></optgroup>
+              <optgroup label="Commercial"><option>Tenant Build-Out</option><option>LED Retrofit</option><option>Code Compliance</option><option>Emergency Repair</option><option>Data &amp; Low-Voltage</option><option>Maintenance Plan</option></optgroup>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+          <div class="form-field"><label for="urgency">Urgency</label>
+            <select id="urgency" name="urgency"><option>Standard (within a week)</option><option>Soon (within 48 hours)</option><option>Emergency (today)</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required /></div>
+          <div class="form-field"><label for="time">Preferred time *</label>
+            <select id="time" name="time" required><option value="">Choose a time…</option><option>7:00 AM – 9:00 AM</option><option>9:00 AM – 11:00 AM</option><option>11:00 AM – 1:00 PM</option><option>1:00 PM – 3:00 PM</option><option>3:00 PM – 5:00 PM</option><option>5:00 PM – 7:00 PM</option></select>
+          </div>
+        </div>
+        <div class="form-field"><label for="notes">Tell us about the job</label><textarea id="notes" name="notes" rows="5" placeholder="Briefly describe what you need help with…"></textarea></div>
+        <div class="form-field checkbox"><input id="consent" name="consent" type="checkbox" required /><label for="consent">I agree to be contacted by phone or email about this request. *</label></div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Request Appointment</button>
+        <div class="form-success" id="formSuccess" hidden><h3>&#10003; Request received!</h3><p>Thanks <span id="successName"></span> — we'll call you at <span id="successPhone"></span> within the hour to confirm your <span id="successWindow"></span> appointment.</p></div>
+      </form>
+      <aside class="booking-aside">
+        <h3>What happens next?</h3>
+        <ol><li>We confirm your appointment by phone or text.</li><li>A licensed electrician arrives during your time window.</li><li>You get a flat-rate quote before any work starts.</li></ol>
+        <hr />
+        <h3>Need it now?</h3>
+        <p>For same-day or emergency service, please call us directly.</p>
+        <a href="tel:+19545550123" class="btn btn-primary btn-block">Call 954-555-0123</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="page-head" id="contact">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch.</h1>
+      <p class="lede">We answer the phone — really. For the fastest response, give us a call.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <a class="contact-card" href="tel:+19545550123"><div class="card-icon">&#128222;</div><h3>Phone</h3><p class="big">954-555-0123</p><p class="muted">Mon–Sat 7am–7pm &middot; 24/7 Emergency</p></a>
+      <a class="contact-card" href="mailto:hello@southfloridaelectric.com"><div class="card-icon">&#9993;</div><h3>Email</h3><p class="big">hello@southfloridaelectric.com</p><p class="muted">Replies within 1 business hour</p></a>
+      <div class="contact-card"><div class="card-icon">&#128205;</div><h3>Service Area</h3><p class="big">Tri-County Florida</p><p class="muted">Broward &middot; Miami-Dade &middot; Palm Beach</p></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div><h2>Ready to schedule?</h2><p>Pick a date and time that works for you — we'll handle the rest.</p></div>
+      <a href="#booking" class="btn btn-primary btn-lg">Book Your Appointment</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><div class="logo logo-light"><span class="bolt">&#9889;</span><span>South Florida <strong>Electric</strong></span></div><p class="muted">Licensed master electricians serving South Florida since 2008.</p></div>
+      <div><h5>Company</h5><a href="#services">Services</a><a href="#booking">Book Now</a><a href="#contact">Contact</a></div>
+      <div><h5>Contact</h5><a href="tel:+19545550123">954-555-0123</a><a href="mailto:hello@southfloridaelectric.com">hello@southfloridaelectric.com</a><p class="muted">Mon–Sat 7am–7pm &middot; 24/7 Emergency</p></div>
+    </div>
+    <div class="container footer-bottom"><small>&copy; 2026 South Florida Electric. License #EC0000000.</small></div>
+  </footer>
+
+  <script>
+    (function(){
+      var t=document.querySelector('.nav-toggle'),n=document.querySelector('.nav');
+      if(t&&n){t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',String(o));});}
+      var d=document.getElementById('date');
+      if(d){var x=new Date(),y=x.getFullYear(),m=String(x.getMonth()+1).padStart(2,'0'),da=String(x.getDate()).padStart(2,'0');d.min=y+'-'+m+'-'+da;}
+      var f=document.getElementById('bookingForm');
+      if(f){f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return;}
+        var fd=new FormData(f);
+        document.getElementById('successName').textContent=fd.get('firstName')||'';
+        document.getElementById('successPhone').textContent=fd.get('phone')||'';
+        document.getElementById('successWindow').textContent=(fd.get('date')||'')+' '+(fd.get('time')||'');
+        f.querySelector('button[type=submit]').disabled=true;
+        var s=document.getElementById('formSuccess');s.hidden=false;s.scrollIntoView({behavior:'smooth',block:'center'});
+      });}
+    })();
+  </script>
+</body>
+</html>
